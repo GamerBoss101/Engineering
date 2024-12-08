@@ -1,10 +1,10 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial mySerial(10, 11); // RX, TX
+SoftwareSerial mySerial(12, 13); // TX, RX
 
-const int ledPin = 13;
-const int buttonPin1 = 7, buttonPin2 = 6, buttonPin3 = 5;
+const int ledPin = 8;
+const int buttonPin1 = 3, buttonPin2 = 5, buttonPin3 = 7;
 int buttonState1 = 0, buttonState2 = 0, buttonState3 = 0;
 
 void setup() {
@@ -24,7 +24,7 @@ void setup() {
 
 void serialSent(int buttonPin, int buttonState) {
 	switch (buttonPin) {
-		case 7:
+		case 3:
 			// if the button state changes from high to low send button pressed 
 			if(buttonState != buttonState1) {
 				if (buttonState == LOW) {
@@ -34,7 +34,7 @@ void serialSent(int buttonPin, int buttonState) {
 				buttonState1 = buttonState;
 			}
 			break;
-		case 6:
+		case 5:
 			if(buttonState != buttonState2) {
 				if (buttonState == LOW) {
 					Serial.println("ard-" + String(buttonPin) + "-p");
@@ -43,7 +43,7 @@ void serialSent(int buttonPin, int buttonState) {
 				buttonState2 = buttonState;
 			}
 			break;
-		case 5:
+		case 7:
 			if(buttonState != buttonState3) {
 				if (buttonState == LOW) {
 					Serial.println("ard-" + String(buttonPin) + "-p");
